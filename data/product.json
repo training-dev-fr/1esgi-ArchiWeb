@@ -1,0 +1,28 @@
+{
+    "id": 4,
+    "listProduct": [{
+            "id": 1,
+            "firstname": "Juliette",
+            "lastname": "Dufour",
+            "birthday": "2001-02-04"
+        },
+        {
+            "id": 2,
+            "firstname": "Aurélien",
+            "lastname": "Vaast",
+            "birthday": "2000-01-01"
+        },
+        {
+            "id": 3,
+            "firstname": "Jules",
+            "lastname": "Dupuis",
+            "birthday": "1995-05-08"
+        },
+        {
+            "id": 4,
+            "firstname": "Jean",
+            "lastname": "Delaporte",
+            "birthday": "1979-05-11"
+        }
+    ]
+}
