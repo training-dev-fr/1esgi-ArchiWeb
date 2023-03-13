@@ -24,8 +24,8 @@
         $products = getData();
     
         $product->id = ++$products->id;
-        $products->listProduct[] = $user;
-        file_put_contents("data/product.json", json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        $products->listProduct[] = $product;
+        file_put_contents("data/product.json", json_encode($products, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
     
     function updateProduct($user)
@@ -46,8 +46,8 @@
         $products = getData();
         $before = count($products);
     
-        $products->listProduct = array_filter($products->listProduct, function ($user) use ($id) {
-            return $user->id != $id;
+        $products->listProduct = array_filter($products->listProduct, function ($product) use ($id) {
+            return $product->id != $id;
         });
         if($before == count($products->listProduct) +1){
             file_put_contents("data/product.json", json_encode($products, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
