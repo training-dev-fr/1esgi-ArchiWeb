@@ -44,7 +44,7 @@
     function deleteProduct($id)
     {
         $products = getData();
-        $before = count($products);
+        $before = count($products->listProduct);
     
         $products->listProduct = array_filter($products->listProduct, function ($product) use ($id) {
             return $product->id != $id;
