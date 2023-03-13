@@ -1,8 +1,8 @@
 <?php
-    namespace Model;
+    namespace Model\Product;
     function getData()
     {
-        $products = file_get_contents("/data/product.json");
+        $products = file_get_contents("data/product.json");
         return json_decode($products);
     }
     function getAllProducts()
@@ -25,7 +25,7 @@
     
         $product->id = ++$products->id;
         $products->listProduct[] = $user;
-        file_put_contents("user.json", json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        file_put_contents("data/product.json", json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
     
     function updateProduct($user)
@@ -34,7 +34,7 @@
         $key = array_search($user->id, array_column($products->listProduct, 'id'));
         if (!empty($key)) {
             $products->listProduct = array_replace($products->listProduct, array($key => $user));
-            file_put_contents("user.json", json_encode($products, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+            file_put_contents("data/product.json", json_encode($products, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
             return true;
         } else {
             return false;
@@ -50,7 +50,7 @@
             return $user->id != $id;
         });
         if($before == count($products->listProduct) +1){
-            file_put_contents("user.json", json_encode($products, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+            file_put_contents("data/product.json", json_encode($products, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
             return true;
         }else{
             return false;
