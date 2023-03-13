@@ -8,39 +8,39 @@ $id = intval($match[2][0]);
 header("Content-Type: application/json");
 if ($match[1][0] == "Users") {
     switch ($method) {
-        case "GET";
+        case "GET":
             if ($id != 0) {
                 echo \Controller\getOneUser($id);
             } else {
                 echo \Controller\getAllUsers();
             }
             break;
-        case "POST";
+        case "POST":
             echo \Controller\createUser();
             break;
-        case "PUT";
+        case "PUT":
             echo \Controller\updateUser($id);
             break;
-        case "DELETE";
+        case "DELETE":
             echo \Controller\deleteUser($id);
             break;
     }
 }elseif($match[1][0] == "Products"){
     switch ($method) {
-        case "GET";
+        case "GET":
             if ($id != 0) {
                 echo \Controller\getOneProduct($id);
             } else {
                 echo \Controller\getAllProducts();
             }
             break;
-        case "POST";
+        case "POST":
             echo \Controller\createProduct();
             break;
-        case "PUT";
+        case "PUT":
             echo \Controller\updateProduct($id);
             break;
-        case "DELETE";
+        case "DELETE":
             echo \Controller\deleteProduct($id);
             break;
     }
