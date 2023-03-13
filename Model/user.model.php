@@ -32,7 +32,7 @@
     {
         $users = getData();
         $key = array_search($user->id, array_column($users->listUser, 'id'));
-        if (!empty($key)) {
+        if ($key !== false) {
             $users->listUser = array_replace($users->listUser, array($key => $user));
             file_put_contents("data/user.json", json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
             return true;

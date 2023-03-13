@@ -28,12 +28,12 @@
         file_put_contents("data/product.json", json_encode($products, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
     
-    function updateProduct($user)
+    function updateProduct($product)
     {
         $products = getData();
-        $key = array_search($user->id, array_column($products->listProduct, 'id'));
-        if (!empty($key)) {
-            $products->listProduct = array_replace($products->listProduct, array($key => $user));
+        $key = array_search($product->id, array_column($products->listProduct, 'id'));
+        if ($key !== false) {
+            $products->listProduct = array_replace($products->listProduct, array($key => $product));
             file_put_contents("data/product.json", json_encode($products, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
             return true;
         } else {

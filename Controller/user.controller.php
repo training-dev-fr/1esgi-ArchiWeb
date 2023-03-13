@@ -24,10 +24,11 @@
 
     function updateUser($id)
     {
+        var_dump(file_get_contents("php://input"));
         $data = json_decode(file_get_contents("php://input"));
+        var_dump($data);
         $user = new \stdClass();
         $user->id = $id;
-        var_dump($data);
         $user->firstname = $data->firstname;
         $user->lastname = $data->lastname;
         $user->birthday = $data->birthday;
