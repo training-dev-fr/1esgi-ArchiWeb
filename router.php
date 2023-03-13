@@ -24,7 +24,7 @@ if ($match[1][0] == "Users") {
             echo \Controller\deleteUser($id);
             break;
     }
-}elseif($match[1][0] == "Product"){
+}elseif($match[1][0] == "Products"){
     switch ($method) {
         case "GET";
             if ($id != 0) {

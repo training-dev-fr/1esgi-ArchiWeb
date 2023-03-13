@@ -2,39 +2,39 @@
     namespace Model;
     function getData()
     {
-        $users = file_get_contents("/data/product.json");
-        return json_decode($users);
+        $products = file_get_contents("/data/product.json");
+        return json_decode($products);
     }
     function getAllProducts()
     {
-        return getData()->listUser;
+        return getData()->listProduct;
     }
     
     function getOneProduct($id)
     {
-        $users = getData();
-        $result = array_filter($users->listUser, function ($user) use ($id) {
+        $products = getData();
+        $result = array_filter($products->listProduct, function ($user) use ($id) {
             return $user->id == $id;
         });
         return array_shift($result);
     }
     
-    function createProduct($user)
+    function createProduct($product)
     {
-        $users = getData();
+        $products = getData();
     
-        $user->id = ++$users->id;
-        $users->listUser[] = $user;
+        $product->id = ++$products->id;
+        $products->listProduct[] = $user;
         file_put_contents("user.json", json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
     
     function updateProduct($user)
     {
-        $users = getData();
-        $key = array_search($user->id, array_column($users->listUser, 'id'));
+        $products = getData();
+        $key = array_search($user->id, array_column($products->listProduct, 'id'));
         if (!empty($key)) {
-            $users->listUser = array_replace($users->listUser, array($key => $user));
-            file_put_contents("user.json", json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+            $products->listProduct = array_replace($products->listProduct, array($key => $user));
+            file_put_contents("user.json", json_encode($products, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
             return true;
         } else {
             return false;
@@ -43,14 +43,14 @@
     
     function deleteProduct($id)
     {
-        $users = getData();
-        $before = count($users);
+        $products = getData();
+        $before = count($products);
     
-        $users->listUser = array_filter($users->listUser, function ($user) use ($id) {
+        $products->listProduct = array_filter($products->listProduct, function ($user) use ($id) {
             return $user->id != $id;
         });
-        if($before == count($users->listUser) +1){
-            file_put_contents("user.json", json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        if($before == count($products->listProduct) +1){
+            file_put_contents("user.json", json_encode($products, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
             return true;
         }else{
             return false;
